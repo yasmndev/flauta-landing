@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Onest", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --color-fog: #eceef1;
+  --color-ink: #14171c;
+  --color-muted: #555b64;
+  --color-faint: #868c95;
+  --color-line: #d4d8de;
+  --color-snow: #f4f5f7;
+
+  --color-accent: #8e2433;
+  --color-accent-hover: #7a1e2b;
+  --color-accent-soft: #f3dde0;
+
+  --color-warn: #85560a;
+  --color-warn-bg: #fbeacb;
+
+  --color-night-muted: #9ea4ad;
+  --color-night-faint: #6e747d;
+  --color-night-line: #2c3038;
+  --color-night-check: #f0a3ae;
+
+  --color-logo: #69707a;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 96px;
+  }
+  body {
+    @apply bg-fog font-sans text-ink antialiased;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent;
+  }
+}

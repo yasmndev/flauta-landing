@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flauta — CRM dla sprzedaży B2B z długim cyklem</title>
+  <meta name="description" content="Flauta pilnuje, żeby każda transakcja miała zaplanowany kolejny krok, zbiera korespondencję w jednym wątku i pokazuje, na którym etapie uciekają pieniądze.">
+  <meta name="theme-color" content="#eceef1">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Crect width='20' height='20' rx='5' fill='%238e2433'/%3E%3Crect x='5' y='9' width='10' height='2' rx='1' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&family=Montserrat:wght@800&family=Onest:wght@400;500;600;700&family=Space+Grotesk:wght@700&family=Unbounded:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+  <!-- Shared icon -->
+  <svg class="hidden" aria-hidden="true">
+    <symbol id="check" viewBox="0 0 16 16">
+      <path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+  </svg>
+
+  <!-- ============ HEADER / NAV ============ -->
+  <header class="sticky top-0 z-50 px-4 pt-4 lg:px-8 lg:pt-6">
+    <nav class="mx-auto max-w-[1200px] rounded-xl border border-line bg-white" aria-label="Główna nawigacja">
+      <div class="flex items-center justify-between py-2 pr-2 pl-3 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:pl-4">
+        <a href="#top" class="flex items-center gap-2" aria-label="Flauta — strona główna">
+          <span class="relative size-5 rounded-[5px] bg-accent"><span class="absolute top-[9px] left-[5px] h-0.5 w-2.5 rounded-full bg-white"></span></span>
+          <span class="text-[19px] leading-6 font-bold tracking-[-0.01em]">Flauta</span>
+        </a>
+
+        <ul class="hidden items-center gap-7 text-[15px] leading-5 text-muted lg:flex">
+          <li><a class="transition-colors hover:text-ink" href="#funkcje">Funkcje</a></li>
+          <li><a class="transition-colors hover:text-ink" href="#funkcje">Integracje</a></li>
+          <li><a class="transition-colors hover:text-ink" href="#klienci">Klienci</a></li>
+          <li><a class="transition-colors hover:text-ink" href="#cennik">Cennik</a></li>
+          <li><a class="transition-colors hover:text-ink" href="#">Blog</a></li>
+        </ul>
+
+        <div class="flex items-center justify-end gap-2 lg:gap-5">
+          <div class="hidden items-center gap-1 font-mono text-xs leading-4 lg:flex">
+            <a href="#" class="text-ink" aria-current="true">PL</a><span class="text-line">/</span><a href="#" class="text-faint hover:text-ink">EN</a>
+          </div>
+          <span class="hidden h-5 w-px bg-line lg:block"></span>
+          <a href="#" class="hidden text-[15px] leading-5 font-medium lg:inline">Zaloguj się</a>
+          <a href="#cennik" class="rounded-lg bg-accent px-4 py-2.5 text-sm leading-5 font-medium text-white transition-colors hover:bg-accent-hover">
+            <span class="lg:hidden">Wypróbuj</span><span class="hidden lg:inline">Wypróbuj za darmo</span>
+          </a>
+          <button id="menu-toggle" type="button" class="grid size-10 place-items-center rounded-lg border border-line transition-colors hover:bg-fog lg:hidden" aria-expanded="false" aria-controls="mobile-menu" aria-label="Otwórz menu">
+            <svg data-icon="open" width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M0 1h16M0 6h16M0 11h16" stroke="currentColor" stroke-width="1.5"/></svg>
+            <svg data-icon="close" class="hidden" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 1l12 12M13 1 1 13" stroke="currentColor" stroke-width="1.5"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="hidden border-t border-line px-3 pt-2 pb-3 lg:hidden">
+        <ul class="flex flex-col text-lg leading-6">
+          <li><a class="block border-b border-line py-3.5" href="#funkcje">Funkcje</a></li>
+          <li><a class="block border-b border-line py-3.5" href="#funkcje">Integracje</a></li>
+          <li><a class="block border-b border-line py-3.5" href="#klienci">Klienci</a></li>
+          <li><a class="block border-b border-line py-3.5" href="#cennik">Cennik</a></li>
+          <li><a class="block py-3.5" href="#">Blog</a></li>
+        </ul>
+        <div class="mt-2 flex flex-col gap-2">
+          <a href="#" class="rounded-lg border border-ink py-3 text-center font-medium">Zaloguj się</a>
+          <a href="#cennik" class="rounded-lg bg-accent py-3 text-center font-medium text-white">Wypróbuj za darmo przez 14 dni</a>
+        </div>
+        <div class="mt-4 flex items-center gap-1 font-mono text-xs leading-4">
+          <a href="#" class="text-ink" aria-current="true">PL</a><span class="text-line">/</span><a href="#" class="text-faint">EN</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="px-4 pt-12 pb-16 lg:px-8 lg:pt-24 lg:pb-28">
+      <div class="mx-auto grid max-w-[1200px] grid-cols-4 items-center gap-x-4 gap-y-12 lg:grid-cols-12 lg:gap-x-6">
+        <div class="col-span-4 flex flex-col gap-6 lg:col-span-7 lg:gap-8">
+          <div class="flex flex-col gap-3 lg:gap-4">
+            <p class="font-mono text-[13px] leading-4 text-accent">CRM dla sprzedaży B2B z długim cyklem</p>
+            <h1 class="text-4xl leading-10 font-semibold tracking-[-0.025em] lg:text-6xl lg:leading-16">Żadna transakcja nie utknie bez kolejnego kroku</h1>
+          </div>
+          <p class="max-w-[588px] text-[17px] leading-[26px] text-muted lg:text-[19px] lg:leading-[29px]">Flauta to CRM dla działów sprzedaży, w których transakcja trwa od miesiąca do pół roku. Pilnuje, żeby każda miała zaplanowany kolejny krok, zbiera korespondencję w jednym wątku i pokazuje, na którym etapie uciekają pieniądze.</p>
+          <div class="flex flex-col gap-3 sm:flex-row">
+            <a href="#cennik" class="rounded-lg bg-accent px-6 py-3.5 text-center leading-5 font-medium text-white transition-colors hover:bg-accent-hover">Wypróbuj za darmo przez 14 dni</a>
+            <a href="#" class="rounded-lg border border-ink px-6 py-3.5 text-center leading-5 font-medium transition-colors hover:bg-white">Demo w 12 minut</a>
+          </div>
+          <ul class="flex flex-col gap-2 text-[15px] leading-[22px] text-muted">
+            <li class="flex gap-2"><svg class="mt-[3px] size-4 shrink-0 text-accent"><use href="#check"/></svg>Dane przechowywane w UE, zgodność z RODO</li>
+            <li class="flex gap-2"><svg class="mt-[3px] size-4 shrink-0 text-accent"><use href="#check"/></svg>Import z Pipedrive, HubSpot i Excela w jeden dzień</li>
+            <li class="flex gap-2"><svg class="mt-[3px] size-4 shrink-0 text-accent"><use href="#check"/></svg>Okres próbny bez podpinania karty</li>
+          </ul>
+        </div>
+
+        <!-- Product preview -->
+        <div class="col-span-4 flex flex-col gap-3 rounded-[14px] border border-line bg-white p-4 lg:col-span-5" aria-label="Podgląd lejka sprzedaży w aplikacji" role="img">
+          <div class="flex items-center justify-between font-mono text-xs leading-4">
+            <span class="text-muted">Lejek · III kwartał</span>
+            <span class="font-medium">4,2 mln zł w toku</span>
+          </div>
+          <div class="grid grid-cols-2 items-start gap-2 sm:grid-cols-3">
+            <div class="flex flex-col gap-2 rounded-lg bg-fog p-2">
+              <div class="flex justify-between text-xs leading-4"><span class="font-medium">Kwalifikacja</span><span class="font-mono text-faint">12</span></div>
+              <div class="flex flex-col gap-1 rounded-md border border-line bg-white px-2.5 py-3"><span class="text-[13px] leading-[18px] font-medium">Technochłód</span><span class="font-mono text-xs leading-4 text-muted">280 tys. zł</span></div>
+              <div class="flex flex-col gap-1 rounded-md border border-line bg-white px-2.5 py-3"><span class="text-[13px] leading-[18px] font-medium">Bałtyk Logistics</span><span class="font-mono text-xs leading-4 text-muted">195 tys. zł</span></div>
+            </div>
+            <div class="flex flex-col gap-2 rounded-lg bg-fog p-2">
+              <div class="flex justify-between text-xs leading-4"><span class="font-medium">Oferta wysłana</span><span class="font-mono text-faint">7</span></div>
+              <div class="flex flex-col gap-1 rounded-md border border-line bg-white px-2.5 py-3"><span class="text-[13px] leading-[18px] font-medium">Meridian</span><span class="font-mono text-xs leading-4 text-muted">540 tys. zł</span><span class="self-start whitespace-nowrap rounded bg-warn-bg px-1.5 py-1 font-mono text-[10.5px] leading-[14px] text-warn">9 dni bez kroku</span></div>
+              <div class="flex flex-col gap-1 rounded-md border border-line bg-white px-2.5 py-3"><span class="text-[13px] leading-[18px] font-medium">Okna Pro</span><span class="font-mono text-xs leading-4 text-muted">120 tys. zł</span></div>
+            </div>
+            <div class="hidden flex-col gap-2 rounded-lg bg-fog p-2 sm:flex">
+              <div class="flex justify-between text-xs leading-4"><span class="font-medium">Negocjacje</span><span class="font-mono text-faint">4</span></div>
+              <div class="flex flex-col gap-1 rounded-md border border-line bg-white px-2.5 py-3"><span class="text-[13px] leading-[18px] font-medium">Port Północny</span><span class="font-mono text-xs leading-4 text-muted">910 tys. zł</span></div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-2 border-t border-line pt-3">
+            <span class="font-mono text-[11px] leading-[14px] text-faint">Dziś</span>
+            <div class="flex gap-3 text-[13px] leading-[18px]"><span class="font-mono text-xs text-muted">10:30</span>Wysłać umowę · Technochłód</div>
+            <div class="flex gap-3 text-[13px] leading-[18px]"><span class="font-mono text-xs text-muted">15:00</span>Rozmowa z zakupami · Meridian</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SOCIAL PROOF ============ -->
+    <section id="klienci" class="border-t border-line px-4 py-12 lg:px-8 lg:py-16">
+      <div class="mx-auto grid max-w-[1200px] grid-cols-4 items-center gap-x-4 gap-y-10 lg:grid-cols-12 lg:gap-x-6">
+        <div class="col-span-4 flex flex-col gap-3">
+          <p class="text-[52px] leading-14 font-semibold tracking-[-0.03em] lg:text-7xl lg:leading-[76px]">−15 dni</p>
+          <p class="text-[17px] leading-[25px]">średni cykl sprzedaży u klientów po pół roku pracy we Flaucie: było 41 dni, jest 26</p>
+          <p class="font-mono text-xs leading-4 text-faint">Dane 212 firm, styczeń–czerwiec 2026</p>
+        </div>
+        <div class="col-span-4 flex flex-col gap-4 lg:col-span-7 lg:col-start-6">
+          <p class="font-mono text-xs leading-4 text-faint">Wśród klientów</p>
+          <ul class="grid grid-cols-2 gap-4 text-logo lg:grid-cols-4 lg:gap-6">
+            <li class="grid h-[72px] place-items-center rounded-[10px] border border-line lg:h-[88px]"><span class="font-['Unbounded'] text-[13px] font-semibold tracking-[0.02em]">TECHNOCHŁÓD</span></li>
+            <li class="grid h-[72px] place-items-center rounded-[10px] border border-line lg:h-[88px]"><span class="font-['Instrument_Serif'] text-[28px] tracking-[-0.01em]">Meridian</span></li>
+            <li class="grid h-[72px] place-items-center rounded-[10px] border border-line lg:h-[88px]"><span class="font-['Space_Grotesk'] text-xl font-bold tracking-[-0.02em]">bałtyk/log</span></li>
+            <li class="grid h-[72px] place-items-center rounded-[10px] border border-line lg:h-[88px]"><span class="font-['Montserrat'] text-[21px] font-extrabold tracking-[-0.04em]">agropol</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURES ============ -->
+    <section id="funkcje" class="border-t border-line px-4 py-16 lg:px-8 lg:py-28">
+      <div class="mx-auto flex max-w-[1200px] flex-col gap-10 lg:gap-14">
+        <div class="flex flex-col gap-4">
+          <p class="font-mono text-[13px] leading-4 text-accent">Funkcje</p>
+          <h2 class="max-w-[690px] text-[28px] leading-[34px] font-semibold tracking-[-0.02em] lg:text-[44px] lg:leading-[50px]">Trzy powody, dla których firmy odchodzą od arkuszy i starych CRM-ów</h2>
+        </div>
+        <div class="grid gap-8 lg:grid-cols-3 lg:gap-6">
+          <article class="flex flex-col gap-3 border-t border-ink pt-6">
+            <span class="font-mono text-[13px] leading-4 text-faint">01</span>
+            <h3 class="text-[22px] leading-7 font-semibold tracking-[-0.01em]">Kolejny krok przy każdej transakcji</h3>
+            <p class="leading-6 text-muted">Jeśli transakcja nie ma zaplanowanego działania, handlowiec i kierownik zobaczą ją w porannym podsumowaniu. Nic nie wisi tygodniami bez ruchu.</p>
+            <p class="font-mono text-xs leading-[18px] text-accent">Transakcji bez kroku: 31 → 4 w pierwszym miesiącu</p>
+          </article>
+          <article class="flex flex-col gap-3 border-t border-ink pt-6">
+            <span class="font-mono text-[13px] leading-4 text-faint">02</span>
+            <h3 class="text-[22px] leading-7 font-semibold tracking-[-0.01em]">Cała korespondencja w karcie</h3>
+            <p class="leading-6 text-muted">E-maile, WhatsApp i połączenia z telefonii VoIP trafiają na oś czasu transakcji. Nowy handlowiec w dziesięć minut wie, co ustalono przed nim.</p>
+            <p class="font-mono text-xs leading-[18px] text-accent">Gmail, Outlook, WhatsApp, Zadarma, Aircall</p>
+          </article>
+          <article class="flex flex-col gap-3 border-t border-ink pt-6">
+            <span class="font-mono text-[13px] leading-4 text-faint">03</span>
+            <h3 class="text-[22px] leading-7 font-semibold tracking-[-0.01em]">Raport, który ktoś czyta</h3>
+            <p class="leading-6 text-muted">Konwersja na etapach, powody odmów i prognoza przychodu na kwartał. Składa się sam i trafia do kierownika w każdy poniedziałek o 9:00.</p>
+            <p class="font-mono text-xs leading-[18px] text-accent">Eksport do Excela i Arkuszy Google</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRICING ============ -->
+    <section id="cennik" class="border-t border-line px-4 py-16 lg:px-8 lg:py-28">
+      <div class="mx-auto flex max-w-[1200px] flex-col gap-10 lg:gap-14">
+        <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between lg:gap-6">
+          <div class="flex flex-col gap-4">
+            <p class="font-mono text-[13px] leading-4 text-accent">Cennik</p>
+            <h2 class="text-[28px] leading-[34px] font-semibold tracking-[-0.02em] lg:text-[44px] lg:leading-[50px]">Płacisz za handlowców, nie za funkcje</h2>
+          </div>
+          <p class="leading-6 text-muted lg:w-[384px] lg:shrink-0">Cena za użytkownika miesięcznie przy płatności rocznej. Kierownicy i obserwatorzy za darmo.</p>
+        </div>
+
+        <div class="flex flex-col gap-4">
+          <!-- Basic -->
+          <article class="flex flex-col gap-6 rounded-2xl border border-line bg-white p-6 lg:flex-row lg:gap-10 lg:p-8">
+            <div class="flex flex-col gap-5 lg:w-[352px] lg:shrink-0">
+              <h3 class="text-2xl leading-[30px] font-semibold">Basic</h3>
+              <p class="leading-6 text-muted">Dla zespołu do 10 handlowców, który przesiada się z arkuszy.</p>
+              <p class="flex items-baseline gap-2">
+                <span class="text-5xl leading-[52px] font-semibold tracking-[-0.02em]">79 zł</span>
+                <span class="text-sm leading-[18px] text-muted">za użytkownika<br>miesięcznie</span>
+              </p>
+              <a href="#" class="rounded-lg border border-[#b6bcc5] px-6 py-3.5 text-center leading-5 font-medium transition-colors hover:border-ink lg:self-start">Zacznij od Basic</a>
+            </div>
+            <div class="h-px bg-line lg:h-auto lg:w-px"></div>
+            <div class="flex flex-1 flex-col gap-4">
+              <p class="font-mono text-xs leading-4 text-muted">W pakiecie</p>
+              <ul class="grid gap-3 text-[15px] leading-[22px] lg:grid-flow-col lg:grid-rows-3 lg:gap-x-6">
+                <li class="flex gap-2"><svg class="mt-[3px] size-4 shrink-0 text-accent"><use href="#check"/></svg>Lejki i transakcje bez limitów</li>
+                <li class="flex gap-2"><svg class="mt-[3px] size-4 shrink-0 text-accent"><use href="#check"/></svg>E-mail i WhatsApp w karcie transakcji</li>
+                <li class="flex gap-2"><svg class="mt-[3px] size-4 shrink-0 text-accent"><use href="#check"/></svg>Przypomnienia o kolejnym kroku</li>
+                <li class="flex gap-2"><svg class="mt-[3px] size-4 shrink-0 text-accent"><use href="#check"/></svg>Import z Excela, Pipedrive, HubSpot</li>
+                <li class="flex gap-2"><svg class="mt-[3px] size-4 shrink-0 text-accent"><use href="#check"/></svg>Wsparcie na czacie, odpowiedź do 2 godzin</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Pro -->
+          <article class="flex flex-col gap-6 rounded-2xl bg-ink p-6 text-snow lg:flex-row lg:gap-10 lg:p-8">
+            <div class="flex flex-col gap-5 lg:w-[352px] lg:shrink-0">
+              <div class="flex items-center gap-2">
+                <h3 class="text-2xl leading-[30px] font-semibold">Pro</h3>
+                <span class="rounded bg-accent-soft px-2 py-1 font-mono text-[11px] leading-[14px] text-accent">wybiera 7 na 10 zespołów</span>
+              </div>
+              <p class="leading-6 text-night-muted">Dla działu sprzedaży, który potrzebuje prognoz i kontroli wyników handlowców.</p>
+              <p class="flex items-baseline gap-2">
+                <span class="text-5xl leading-[52px] font-semibold tracking-[-0.02em]">149 zł</span>
+                <span class="text-sm leading-[18px] text-night-muted">za użytkownika<br>miesięcznie</span>
+              </p>
+              <a href="#" class="rounded-lg bg-accent-soft px-6 py-3.5 text-center leading-5 font-medium text-ink transition-colors hover:bg-white lg:self-start">Wypróbuj Pro przez 14 dni</a>
+            </div>
+            <div class="h-px bg-night-line lg:h-auto lg:w-px"></div>
+            <div class="flex flex-1 flex-col gap-4">
+              <p class="font-mono text-xs leading-4 text-night-muted">Wszystko z Basic, a do tego</p>
+              <ul class="grid gap-3 text-[15px] leading-[22px] lg:grid-flow-col lg:grid-rows-3 lg:gap-x-6">
+                <li class="flex gap-2"><svg class="mt-[3px] size-4 shrink-0 text-night-check"><use href="#check"/></svg>Prognoza przychodu i plan vs. wykonanie</li>
+                <li class="flex gap-2"><svg class="mt-[3px] size-4 shrink-0 text-night-check"><use href="#check"/></svg>Nagrywanie i transkrypcja rozmów</li>
+                <li class="flex gap-2"><svg class="mt-[3px] size-4 shrink-0 text-night-check"><use href="#check"/></svg>Uprawnienia według działów i oddziałów</li>
+                <li class="flex gap-2"><svg class="mt-[3px] size-4 shrink-0 text-night-check"><use href="#check"/></svg>API, webhooki i logowanie przez SSO</li>
+                <li class="flex gap-2"><svg class="mt-[3px] size-4 shrink-0 text-night-check"><use href="#check"/></svg>Opiekun wdrożenia przez pierwszy miesiąc</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <p class="text-[15px] leading-[22px] text-muted">Ponad 50 użytkowników albo instalacja na własnych serwerach? <a href="mailto:kontakt@flauta.pl" class="text-ink underline decoration-line underline-offset-4 hover:decoration-ink">Napisz do działu sprzedaży</a> — wycenimy indywidualnie.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-ink px-4 pt-14 pb-8 text-night-muted lg:px-8 lg:pt-20 lg:pb-10">
+    <div class="mx-auto flex max-w-[1200px] flex-col gap-10 lg:gap-16">
+      <div class="grid grid-cols-4 gap-x-4 gap-y-10 lg:grid-cols-12 lg:gap-x-6">
+        <div class="col-span-4 flex flex-col gap-4">
+          <a href="#top" class="flex items-center gap-2 text-snow">
+            <span class="relative size-5 rounded-[5px] bg-accent"><span class="absolute top-[9px] left-[5px] h-0.5 w-2.5 rounded-full bg-white"></span></span>
+            <span class="text-[19px] leading-6 font-bold tracking-[-0.01em]">Flauta</span>
+          </a>
+          <p class="text-[15px] leading-[22px]">CRM dla działów sprzedaży B2B, w których transakcja trwa dłużej niż miesiąc.</p>
+          <div class="flex flex-col gap-1 pt-2 text-[15px] leading-[22px]">
+            <a href="mailto:kontakt@flauta.pl" class="font-medium text-snow hover:underline">kontakt@flauta.pl</a>
+            <span>+48 22 307 41 90 · pn–pt, 9:00–17:00</span>
+          </div>
+        </div>
+        <nav class="col-span-4 grid grid-cols-2 gap-x-4 gap-y-8 lg:col-span-7 lg:col-start-6 lg:grid-cols-4 lg:gap-x-6" aria-label="Stopka">
+          <div class="flex flex-col gap-4">
+            <p class="font-mono text-xs leading-4 text-night-faint">Produkt</p>
+            <ul class="flex flex-col gap-2.5 text-[15px] leading-[22px]">
+              <li><a class="hover:text-snow" href="#funkcje">Funkcje</a></li>
+              <li><a class="hover:text-snow" href="#funkcje">Integracje</a></li>
+              <li><a class="hover:text-snow" href="#cennik">Cennik</a></li>
+              <li><a class="hover:text-snow" href="#">Aktualizacje</a></li>
+            </ul>
+          </div>
+          <div class="flex flex-col gap-4">
+            <p class="font-mono text-xs leading-4 text-night-faint">Firma</p>
+            <ul class="flex flex-col gap-2.5 text-[15px] leading-[22px]">
+              <li><a class="hover:text-snow" href="#">O nas</a></li>
+              <li><a class="hover:text-snow" href="#klienci">Klienci</a></li>
+              <li><a class="hover:text-snow" href="#">Kariera</a></li>
+              <li><a class="hover:text-snow" href="mailto:kontakt@flauta.pl">Kontakt</a></li>
+            </ul>
+          </div>
+          <div class="flex flex-col gap-4">
+            <p class="font-mono text-xs leading-4 text-night-faint">Zasoby</p>
+            <ul class="flex flex-col gap-2.5 text-[15px] leading-[22px]">
+              <li><a class="hover:text-snow" href="#">Blog</a></li>
+              <li><a class="hover:text-snow" href="#">Baza wiedzy</a></li>
+              <li><a class="hover:text-snow" href="#">Webinary</a></li>
+              <li><a class="hover:text-snow" href="#">Status systemu</a></li>
+            </ul>
+          </div>
+          <div class="flex flex-col gap-4">
+            <p class="font-mono text-xs leading-4 text-night-faint">Prawne</p>
+            <ul class="flex flex-col gap-2.5 text-[15px] leading-[22px]">
+              <li><a class="hover:text-snow" href="#">Regulamin</a></li>
+              <li><a class="hover:text-snow" href="#">Polityka prywatności</a></li>
+              <li><a class="hover:text-snow" href="#">RODO</a></li>
+              <li><a class="hover:text-snow" href="#">Umowa powierzenia</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="h-px bg-night-line"></div>
+      <div class="flex flex-col gap-4 text-sm leading-5 lg:flex-row lg:items-center lg:justify-between lg:gap-6">
+        <p class="text-night-faint">© 2026 Flauta sp. z o.o., Warszawa</p>
+        <div class="flex items-center gap-6">
+          <a class="hover:text-snow" href="#">LinkedIn</a>
+          <a class="hover:text-snow" href="#">YouTube</a>
+          <span class="flex items-center gap-1 font-mono text-xs leading-4"><a href="#" class="text-snow" aria-current="true">PL</a><span class="text-night-line">/</span><a href="#" class="text-night-faint hover:text-snow">EN</a></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const btn = document.getElementById('menu-toggle');
+      const menu = document.getElementById('mobile-menu');
+      const icons = { open: btn.querySelector('[data-icon=open]'), close: btn.querySelector('[data-icon=close]') };
+
+      const setOpen = (open) => {
+        menu.classList.toggle('hidden', !open);
+        icons.open.classList.toggle('hidden', open);
+        icons.close.classList.toggle('hidden', !open);
+        btn.setAttribute('aria-expanded', String(open));
+        btn.setAttribute('aria-label', open ? 'Zamknij menu' : 'Otwórz menu');
+      };
+
+      btn.addEventListener('click', () => setOpen(menu.classList.contains('hidden')));
+      menu.addEventListener('click', (e) => { if (e.target.closest('a')) setOpen(false); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+      matchMedia('(min-width: 64rem)').addEventListener('change', (e) => { if (e.matches) setOpen(false); });
+    })();
+  </script>
+</body>
+</html>

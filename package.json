@@ -1,0 +1,14 @@
+{
+  "name": "flauta-landing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Landing page for Flauta — CRM dla sprzedaży B2B",
+  "scripts": {
+    "build": "tailwindcss -i src/input.css -o assets/styles.css --minify",
+    "dev": "tailwindcss -i src/input.css -o assets/styles.css --watch"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  }
+}
