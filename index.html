@@ -23,7 +23,7 @@
 
   <!-- ============ HEADER / NAV ============ -->
   <header class="sticky top-0 z-50 px-4 pt-4 lg:px-8 lg:pt-6">
-    <nav class="mx-auto max-w-[1200px] rounded-xl border border-line bg-white" aria-label="Główna nawigacja">
+    <nav id="site-nav" class="group/nav mx-auto max-w-[1200px] rounded-xl border border-line bg-white" aria-label="Główna nawigacja">
       <div class="flex items-center justify-between py-2 pr-2 pl-3 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:pl-4">
         <a href="#top" class="flex items-center gap-2" aria-label="Flauta — strona główna">
           <span class="relative size-5 rounded-[5px] bg-accent"><span class="absolute top-[9px] left-[5px] h-0.5 w-2.5 rounded-full bg-white"></span></span>
@@ -47,28 +47,33 @@
           <a href="#cennik" class="rounded-lg bg-accent px-4 py-2.5 text-sm leading-5 font-medium text-white transition-colors hover:bg-accent-hover">
             <span class="lg:hidden">Wypróbuj</span><span class="hidden lg:inline">Wypróbuj za darmo</span>
           </a>
-          <button id="menu-toggle" type="button" class="grid size-10 place-items-center rounded-lg border border-line transition-colors hover:bg-fog lg:hidden" aria-expanded="false" aria-controls="mobile-menu" aria-label="Otwórz menu">
-            <svg data-icon="open" width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M0 1h16M0 6h16M0 11h16" stroke="currentColor" stroke-width="1.5"/></svg>
-            <svg data-icon="close" class="hidden" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 1l12 12M13 1 1 13" stroke="currentColor" stroke-width="1.5"/></svg>
+          <button id="menu-toggle" type="button" class="group relative size-10 rounded-lg border border-line transition-colors hover:bg-fog aria-expanded:bg-fog lg:hidden" aria-expanded="false" aria-controls="mobile-menu" aria-label="Otwórz menu">
+            <span aria-hidden="true" class="absolute top-[calc(50%-0.75px)] left-3 h-[1.5px] w-4 -translate-y-[5px] rounded-full bg-current transition duration-300 ease-[cubic-bezier(.65,0,.35,1)] group-aria-expanded:translate-y-0 group-aria-expanded:rotate-45 motion-reduce:transition-none"></span>
+            <span aria-hidden="true" class="absolute top-[calc(50%-0.75px)] left-3 h-[1.5px] w-4 rounded-full bg-current transition duration-200 ease-out group-aria-expanded:scale-x-0 group-aria-expanded:opacity-0 motion-reduce:transition-none"></span>
+            <span aria-hidden="true" class="absolute top-[calc(50%-0.75px)] left-3 h-[1.5px] w-4 translate-y-[5px] rounded-full bg-current transition duration-300 ease-[cubic-bezier(.65,0,.35,1)] group-aria-expanded:translate-y-0 group-aria-expanded:-rotate-45 motion-reduce:transition-none"></span>
           </button>
         </div>
       </div>
 
       <!-- Mobile menu -->
-      <div id="mobile-menu" class="hidden border-t border-line px-3 pt-2 pb-3 lg:hidden">
-        <ul class="flex flex-col text-lg leading-6">
-          <li><a class="block border-b border-line py-3.5" href="#funkcje">Funkcje</a></li>
-          <li><a class="block border-b border-line py-3.5" href="#funkcje">Integracje</a></li>
-          <li><a class="block border-b border-line py-3.5" href="#klienci">Klienci</a></li>
-          <li><a class="block border-b border-line py-3.5" href="#cennik">Cennik</a></li>
-          <li><a class="block py-3.5" href="#">Blog</a></li>
-        </ul>
-        <div class="mt-2 flex flex-col gap-2">
-          <a href="#" class="rounded-lg border border-ink py-3 text-center font-medium">Zaloguj się</a>
-          <a href="#cennik" class="rounded-lg bg-accent py-3 text-center font-medium text-white">Wypróbuj za darmo przez 14 dni</a>
-        </div>
-        <div class="mt-4 flex items-center gap-1 font-mono text-xs leading-4">
-          <a href="#" class="text-ink" aria-current="true">PL</a><span class="text-line">/</span><a href="#" class="text-faint">EN</a>
+      <div id="mobile-menu" class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-[cubic-bezier(.65,0,.35,1)] group-data-open/nav:grid-rows-[1fr] motion-reduce:transition-none lg:hidden" inert>
+        <div class="overflow-hidden">
+          <div class="border-t border-line px-3 pt-2 pb-3">
+            <ul class="flex flex-col text-lg leading-6">
+              <li class="menu-item" style="--i:0"><a class="block border-b border-line py-3.5" href="#funkcje">Funkcje</a></li>
+              <li class="menu-item" style="--i:1"><a class="block border-b border-line py-3.5" href="#funkcje">Integracje</a></li>
+              <li class="menu-item" style="--i:2"><a class="block border-b border-line py-3.5" href="#klienci">Klienci</a></li>
+              <li class="menu-item" style="--i:3"><a class="block border-b border-line py-3.5" href="#cennik">Cennik</a></li>
+              <li class="menu-item" style="--i:4"><a class="block py-3.5" href="#">Blog</a></li>
+            </ul>
+            <div class="menu-item mt-2 flex flex-col gap-2" style="--i:5">
+              <a href="#" class="rounded-lg border border-ink py-3 text-center font-medium">Zaloguj się</a>
+              <a href="#cennik" class="rounded-lg bg-accent py-3 text-center font-medium text-white">Wypróbuj za darmo przez 14 dni</a>
+            </div>
+            <div class="menu-item mt-4 flex items-center gap-1 font-mono text-xs leading-4" style="--i:6">
+              <a href="#" class="text-ink" aria-current="true">PL</a><span class="text-line">/</span><a href="#" class="text-faint">EN</a>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
@@ -314,19 +319,18 @@
 
   <script>
     (() => {
+      const nav = document.getElementById('site-nav');
       const btn = document.getElementById('menu-toggle');
       const menu = document.getElementById('mobile-menu');
-      const icons = { open: btn.querySelector('[data-icon=open]'), close: btn.querySelector('[data-icon=close]') };
 
       const setOpen = (open) => {
-        menu.classList.toggle('hidden', !open);
-        icons.open.classList.toggle('hidden', open);
-        icons.close.classList.toggle('hidden', !open);
+        nav.toggleAttribute('data-open', open);
+        menu.inert = !open;
         btn.setAttribute('aria-expanded', String(open));
         btn.setAttribute('aria-label', open ? 'Zamknij menu' : 'Otwórz menu');
       };
 
-      btn.addEventListener('click', () => setOpen(menu.classList.contains('hidden')));
+      btn.addEventListener('click', () => setOpen(!nav.hasAttribute('data-open')));
       menu.addEventListener('click', (e) => { if (e.target.closest('a')) setOpen(false); });
       document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
       matchMedia('(min-width: 64rem)').addEventListener('change', (e) => { if (e.matches) setOpen(false); });
